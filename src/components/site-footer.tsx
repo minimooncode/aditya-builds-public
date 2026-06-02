@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Github, Linkedin, Mail, Twitter } from "lucide-react";
-import { NAV, SITE } from "@/lib/site";
+import { NAV, SECONDARY_NAV, SITE } from "@/lib/site";
 import { NewsletterForm } from "@/components/newsletter-form";
 
 export function SiteFooter() {
