@@ -112,8 +112,8 @@ function RoadmapPage() {
             {TIMELINE.map((t, i) => (
               <div key={t.year} className={`relative grid gap-4 md:grid-cols-2 ${i % 2 === 0 ? "" : "md:[&>*:first-child]:order-2"}`}>
                 <div className="md:pr-10 md:text-right">
-                  <div className="ml-10 rounded-xl border border-border/60 bg-surface/40 p-5 backdrop-blur-sm md:ml-0">
-                    <div className="mb-1 flex items-center gap-2 md:justify-end">
+                  <div className="ml-12 rounded-xl border border-border/60 bg-surface/40 p-5 backdrop-blur-sm md:ml-0">
+                    <div className="mb-1 flex flex-wrap items-center gap-2 md:justify-end">
                       <span className="font-mono text-xs uppercase tracking-wider text-primary-glow">{t.year}</span>
                       {t.status === "now" && (
                         <span className="rounded-full border border-primary/40 bg-primary/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-primary-glow">Now</span>
@@ -126,8 +126,8 @@ function RoadmapPage() {
                     <p className="mt-2 text-sm text-muted-foreground">{t.description}</p>
                   </div>
                 </div>
-                <div className="absolute left-2 top-6 grid h-5 w-5 place-items-center rounded-full border border-primary/60 bg-background md:left-1/2 md:-translate-x-1/2">
-                  <span className={`h-2 w-2 rounded-full ${t.status === "now" ? "bg-primary-glow animate-pulse" : "bg-primary/60"}`} />
+                <div className="absolute left-[10px] top-6 grid h-3.5 w-3.5 place-items-center rounded-full border border-primary/60 bg-background md:left-1/2 md:h-5 md:w-5 md:-translate-x-1/2">
+                  <span className={`h-1.5 w-1.5 rounded-full md:h-2 md:w-2 ${t.status === "now" ? "bg-primary-glow animate-pulse" : "bg-primary/60"}`} />
                 </div>
                 <div className="hidden md:block" />
               </div>

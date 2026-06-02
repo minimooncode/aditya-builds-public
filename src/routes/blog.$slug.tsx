@@ -98,7 +98,7 @@ function PostPage() {
         </ReactMarkdown>
       </div>
 
-      <div className="mt-16 flex items-center justify-between rounded-xl border border-border bg-surface p-5">
+      <div className="mt-16 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-border bg-surface p-5">
         <p className="text-sm font-medium">Found this useful? Share it.</p>
         <div className="flex items-center gap-2">
           <a
