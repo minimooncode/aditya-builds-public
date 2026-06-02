@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Moon, Sun, Menu, X, Terminal } from "lucide-react";
 import { useState } from "react";
-import { NAV, SITE } from "@/lib/site";
+import { NAV, SECONDARY_NAV, SITE } from "@/lib/site";
 import { useTheme } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 
@@ -13,8 +13,8 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/70 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5">
-        <Link to="/" className="group flex items-center gap-2.5">
+      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-5">
+        <Link to="/" className="group flex shrink-0 items-center gap-2.5">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-primary to-primary-glow shadow-glow">
             <Terminal className="h-4 w-4 text-primary-foreground" strokeWidth={2.5} />
           </span>
@@ -23,7 +23,7 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden flex-1 items-center justify-center gap-0.5 lg:flex">
           {NAV.map((item) => {
             const active = item.to === "/" ? pathname === "/" : pathname.startsWith(item.to);
             return (
@@ -31,10 +31,10 @@ export function SiteHeader() {
                 key={item.to}
                 to={item.to}
                 className={cn(
-                  "rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
+                  "rounded-md px-2.5 py-1.5 text-[13px] font-medium transition-colors",
                   active
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-foreground bg-secondary/60"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/40"
                 )}
               >
                 {item.label}
@@ -54,7 +54,7 @@ export function SiteHeader() {
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
-            className="grid h-9 w-9 place-items-center rounded-md text-muted-foreground hover:bg-secondary hover:text-foreground md:hidden"
+            className="grid h-9 w-9 place-items-center rounded-md text-muted-foreground hover:bg-secondary hover:text-foreground lg:hidden"
           >
             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
@@ -62,18 +62,24 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div className="border-t border-border/60 md:hidden">
-          <nav className="mx-auto flex max-w-6xl flex-col px-5 py-3">
-            {NAV.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                onClick={() => setOpen(false)}
-                className="rounded-md px-2 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground"
-              >
-                {item.label}
-              </Link>
-            ))}
+        <div className="border-t border-border/60 lg:hidden">
+          <nav className="mx-auto flex max-w-7xl flex-col px-5 py-3">
+            {[...NAV, ...SECONDARY_NAV].map((item) => {
+              const active = item.to === "/" ? pathname === "/" : pathname.startsWith(item.to);
+              return (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  onClick={() => setOpen(false)}
+                  className={cn(
+                    "rounded-md px-2 py-2 text-sm transition-colors",
+                    active ? "text-foreground bg-secondary/60" : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
         </div>
       )}

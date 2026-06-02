@@ -9,24 +9,56 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RoadmapRouteImport } from './routes/roadmap'
+import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as NowRouteImport } from './routes/now'
+import { Route as NewsletterRouteImport } from './routes/newsletter'
 import { Route as LearningRouteImport } from './routes/learning'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CareerRouteImport } from './routes/career'
+import { Route as BuildInPublicRouteImport } from './routes/build-in-public'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
+const ToolsRoute = ToolsRouteImport.update({
+  id: '/tools',
+  path: '/tools',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RoadmapRoute = RoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NowRoute = NowRouteImport.update({
+  id: '/now',
+  path: '/now',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsletterRoute = NewsletterRouteImport.update({
+  id: '/newsletter',
+  path: '/newsletter',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LearningRoute = LearningRouteImport.update({
@@ -42,6 +74,16 @@ const DashboardRoute = DashboardRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareerRoute = CareerRouteImport.update({
+  id: '/career',
+  path: '/career',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuildInPublicRoute = BuildInPublicRouteImport.update({
+  id: '/build-in-public',
+  path: '/build-in-public',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogRoute = BlogRouteImport.update({
@@ -69,22 +111,36 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/blog': typeof BlogRouteWithChildren
+  '/build-in-public': typeof BuildInPublicRoute
+  '/career': typeof CareerRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/learning': typeof LearningRoute
+  '/newsletter': typeof NewsletterRoute
+  '/now': typeof NowRoute
   '/projects': typeof ProjectsRoute
+  '/resources': typeof ResourcesRoute
+  '/roadmap': typeof RoadmapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tools': typeof ToolsRoute
   '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/blog': typeof BlogRouteWithChildren
+  '/build-in-public': typeof BuildInPublicRoute
+  '/career': typeof CareerRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/learning': typeof LearningRoute
+  '/newsletter': typeof NewsletterRoute
+  '/now': typeof NowRoute
   '/projects': typeof ProjectsRoute
+  '/resources': typeof ResourcesRoute
+  '/roadmap': typeof RoadmapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tools': typeof ToolsRoute
   '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRoutesById {
@@ -92,11 +148,18 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/blog': typeof BlogRouteWithChildren
+  '/build-in-public': typeof BuildInPublicRoute
+  '/career': typeof CareerRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/learning': typeof LearningRoute
+  '/newsletter': typeof NewsletterRoute
+  '/now': typeof NowRoute
   '/projects': typeof ProjectsRoute
+  '/resources': typeof ResourcesRoute
+  '/roadmap': typeof RoadmapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tools': typeof ToolsRoute
   '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRouteTypes {
@@ -105,33 +168,54 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/blog'
+    | '/build-in-public'
+    | '/career'
     | '/contact'
     | '/dashboard'
     | '/learning'
+    | '/newsletter'
+    | '/now'
     | '/projects'
+    | '/resources'
+    | '/roadmap'
     | '/sitemap.xml'
+    | '/tools'
     | '/blog/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/blog'
+    | '/build-in-public'
+    | '/career'
     | '/contact'
     | '/dashboard'
     | '/learning'
+    | '/newsletter'
+    | '/now'
     | '/projects'
+    | '/resources'
+    | '/roadmap'
     | '/sitemap.xml'
+    | '/tools'
     | '/blog/$slug'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/blog'
+    | '/build-in-public'
+    | '/career'
     | '/contact'
     | '/dashboard'
     | '/learning'
+    | '/newsletter'
+    | '/now'
     | '/projects'
+    | '/resources'
+    | '/roadmap'
     | '/sitemap.xml'
+    | '/tools'
     | '/blog/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -139,15 +223,29 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BlogRoute: typeof BlogRouteWithChildren
+  BuildInPublicRoute: typeof BuildInPublicRoute
+  CareerRoute: typeof CareerRoute
   ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRoute
   LearningRoute: typeof LearningRoute
+  NewsletterRoute: typeof NewsletterRoute
+  NowRoute: typeof NowRoute
   ProjectsRoute: typeof ProjectsRoute
+  ResourcesRoute: typeof ResourcesRoute
+  RoadmapRoute: typeof RoadmapRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ToolsRoute: typeof ToolsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tools': {
+      id: '/tools'
+      path: '/tools'
+      fullPath: '/tools'
+      preLoaderRoute: typeof ToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -155,11 +253,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/roadmap': {
+      id: '/roadmap'
+      path: '/roadmap'
+      fullPath: '/roadmap'
+      preLoaderRoute: typeof RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects': {
       id: '/projects'
       path: '/projects'
       fullPath: '/projects'
       preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/now': {
+      id: '/now'
+      path: '/now'
+      fullPath: '/now'
+      preLoaderRoute: typeof NowRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/newsletter': {
+      id: '/newsletter'
+      path: '/newsletter'
+      fullPath: '/newsletter'
+      preLoaderRoute: typeof NewsletterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/learning': {
@@ -181,6 +307,20 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/career': {
+      id: '/career'
+      path: '/career'
+      fullPath: '/career'
+      preLoaderRoute: typeof CareerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/build-in-public': {
+      id: '/build-in-public'
+      path: '/build-in-public'
+      fullPath: '/build-in-public'
+      preLoaderRoute: typeof BuildInPublicRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog': {
@@ -228,11 +368,18 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BlogRoute: BlogRouteWithChildren,
+  BuildInPublicRoute: BuildInPublicRoute,
+  CareerRoute: CareerRoute,
   ContactRoute: ContactRoute,
   DashboardRoute: DashboardRoute,
   LearningRoute: LearningRoute,
+  NewsletterRoute: NewsletterRoute,
+  NowRoute: NowRoute,
   ProjectsRoute: ProjectsRoute,
+  ResourcesRoute: ResourcesRoute,
+  RoadmapRoute: RoadmapRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ToolsRoute: ToolsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

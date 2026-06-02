@@ -24,11 +24,24 @@ export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
 });
 
+const CATEGORIES = [
+  { id: "all", label: "All", match: () => true },
+  { id: "cyber", label: "Cybersecurity", match: (tech: readonly string[]) => tech.some((t) => /security|cyber|recon|osint|nmap|burp|wireshark/i.test(t)) },
+  { id: "ai", label: "AI", match: (tech: readonly string[]) => tech.some((t) => /ai|ml|llm|openai|gpt|gemini/i.test(t)) },
+  { id: "python", label: "Python", match: (tech: readonly string[]) => tech.some((t) => /python/i.test(t)) },
+  { id: "web", label: "Web Development", match: (tech: readonly string[]) => tech.some((t) => /react|next|typescript|tailwind|node|web/i.test(t)) },
+  { id: "automation", label: "Automation", match: (tech: readonly string[]) => tech.some((t) => /automation|bash|script|cron/i.test(t)) },
+] as const;
+
 function ProjectsPage() {
   const { data: projects } = useSuspenseQuery(projectsQuery);
   const allTech = Array.from(new Set(projects.flatMap((p) => p.tech))).sort();
   const [filter, setFilter] = useState<string | null>(null);
-  const filtered = filter ? projects.filter((p) => p.tech.includes(filter)) : projects;
+  const [category, setCategory] = useState<string>("all");
+  const activeCat = CATEGORIES.find((c) => c.id === category) ?? CATEGORIES[0];
+  const filtered = projects
+    .filter((p) => activeCat.match(p.tech))
+    .filter((p) => (filter ? p.tech.includes(filter) : true));
 
   return (
     <section className="mx-auto max-w-6xl px-5 pt-20 pb-24">
@@ -39,30 +52,48 @@ function ProjectsPage() {
       />
 
       <div className="mt-8 flex flex-wrap items-center gap-2">
+        {CATEGORIES.map((c) => (
+          <button
+            key={c.id}
+            onClick={() => setCategory(c.id)}
+            className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+              category === c.id
+                ? "border-primary bg-primary text-primary-foreground"
+                : "border-border bg-surface text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            {c.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">Tech:</span>
         <button
           onClick={() => setFilter(null)}
-          className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+          className={`rounded-full border px-2.5 py-0.5 text-[11px] font-medium transition-colors ${
             filter === null
-              ? "border-primary bg-primary text-primary-foreground"
-              : "border-border bg-surface text-muted-foreground hover:text-foreground"
+              ? "border-primary/60 bg-primary/10 text-foreground"
+              : "border-border/60 bg-surface/40 text-muted-foreground hover:text-foreground"
           }`}
         >
-          All
+          Any
         </button>
         {allTech.map((t) => (
           <button
             key={t}
             onClick={() => setFilter(t)}
-            className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+            className={`rounded-full border px-2.5 py-0.5 text-[11px] font-medium transition-colors ${
               filter === t
-                ? "border-primary bg-primary text-primary-foreground"
-                : "border-border bg-surface text-muted-foreground hover:text-foreground"
+                ? "border-primary/60 bg-primary/10 text-foreground"
+                : "border-border/60 bg-surface/40 text-muted-foreground hover:text-foreground"
             }`}
           >
             {t}
           </button>
         ))}
       </div>
+
 
       <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {filtered.map((p, i) => (

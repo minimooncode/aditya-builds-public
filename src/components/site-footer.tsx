@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Github, Linkedin, Mail, Twitter } from "lucide-react";
-import { NAV, SITE } from "@/lib/site";
+import { NAV, SECONDARY_NAV, SITE } from "@/lib/site";
 import { NewsletterForm } from "@/components/newsletter-form";
 
 export function SiteFooter() {
@@ -31,7 +31,7 @@ export function SiteFooter() {
         <div>
           <p className="mb-3 text-xs font-medium uppercase tracking-wider text-muted-foreground">Sitemap</p>
           <ul className="grid grid-cols-2 gap-y-2 text-sm">
-            {NAV.map((item) => (
+            {[...NAV, ...SECONDARY_NAV].map((item) => (
               <li key={item.to}>
                 <Link to={item.to} className="text-muted-foreground transition-colors hover:text-foreground">
                   {item.label}
