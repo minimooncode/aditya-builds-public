@@ -105,6 +105,7 @@ function Home() {
   const { data: projects } = useSuspenseQuery(projectsQuery);
   const { data: posts } = useSuspenseQuery(postsQuery);
   const { data: tracks } = useSuspenseQuery(tracksQuery);
+  const { data: linkedIn } = useQuery(linkedInQuery);
 
   const recent = posts.slice(0, 1);
   const latestProject = projects[0];
