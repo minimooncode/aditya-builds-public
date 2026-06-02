@@ -1,0 +1,29 @@
+# Aditya Cyber
+
+> A personal brand platform documenting a student’s long-term journey in cybersecurity, AI, and technology — projects, learning notes, resources, and progress, all shared openly.
+
+Aditya Cyber is the digital home of a cybersecurity student and builder. The site serves as a knowledge hub, portfolio, and learning journal that is designed to grow over the next 5–10 years. Topics span cybersecurity fundamentals, Linux, networking, Python, AI, cloud computing, and career development for aspiring technologists.
+
+## Pages
+
+- [/](/): Home — hero introduction, current focus, featured content, journey timeline, and stats dashboard.
+- [/about](/about): About — Aditya’s story, values, skills, and what drives his work.
+- [/projects](/projects): Projects — hands-on cybersecurity, AI, and software projects with write-ups.
+- [/resources](/resources): Resources — curated cybersecurity and technology learning resources by category.
+- [/learning](/learning): Learning — courses, certifications, and study paths currently being pursued.
+- [/blog](/blog): Blog — articles, guides, and student-to-student perspectives on cybersecurity and tech.
+- [/tools](/tools): Tools — cybersecurity and productivity tools used and recommended.
+- [/roadmap](/roadmap): Roadmap — long-term learning and career milestones with progress tracking.
+- [/now](/now): Now — what Aditya is working on right now, current reads, and short-term goals.
+- [/build-in-public](/build-in-public): Build in Public — weekly wins, lessons learned, and transparent progress updates.
+- [/career](/career): Career — internship journey, career goals, and opportunities of interest.
+- [/newsletter](/newsletter): Newsletter — signup and archive of past issues.
+- [/contact](/contact): Contact — get in touch, collaboration inquiries, and social links.
+
+## Blog
+
+- [/blog/cybersecurity-certifications-for-beginners](/blog/cybersecurity-certifications-for-beginners): A student-to-student guide comparing entry-level cybersecurity certifications including Google Cybersecurity Certificate, CompTIA Security+, ISC2 CC, TryHackMe, and Cisco CCST.
+
+## Optional
+
+- [/sitemap.xml](/sitemap.xml): XML sitemap for search engine crawlers.
