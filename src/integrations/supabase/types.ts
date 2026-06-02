@@ -14,7 +14,204 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      blog_posts: {
+        Row: {
+          category: string
+          content_md: string
+          cover_url: string | null
+          excerpt: string
+          featured: boolean
+          id: string
+          published: boolean
+          published_at: string
+          read_minutes: number
+          slug: string
+          title: string
+        }
+        Insert: {
+          category: string
+          content_md: string
+          cover_url?: string | null
+          excerpt: string
+          featured?: boolean
+          id?: string
+          published?: boolean
+          published_at?: string
+          read_minutes?: number
+          slug: string
+          title: string
+        }
+        Update: {
+          category?: string
+          content_md?: string
+          cover_url?: string | null
+          excerpt?: string
+          featured?: boolean
+          id?: string
+          published?: boolean
+          published_at?: string
+          read_minutes?: number
+          slug?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      contact_messages: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      dashboard_items: {
+        Row: {
+          detail: string | null
+          id: string
+          kind: Database["public"]["Enums"]["dashboard_kind"]
+          sort_order: number
+          status: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          detail?: string | null
+          id?: string
+          kind: Database["public"]["Enums"]["dashboard_kind"]
+          sort_order?: number
+          status?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          detail?: string | null
+          id?: string
+          kind?: Database["public"]["Enums"]["dashboard_kind"]
+          sort_order?: number
+          status?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      learning_tracks: {
+        Row: {
+          completed: string[]
+          current_topic: string | null
+          description: string
+          icon: string
+          id: string
+          name: string
+          next_up: string[]
+          progress: number
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          completed?: string[]
+          current_topic?: string | null
+          description: string
+          icon: string
+          id?: string
+          name: string
+          next_up?: string[]
+          progress?: number
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          completed?: string[]
+          current_topic?: string | null
+          description?: string
+          icon?: string
+          id?: string
+          name?: string
+          next_up?: string[]
+          progress?: number
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      newsletter_subscribers: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          cover_url: string | null
+          created_at: string
+          demo_url: string | null
+          description: string
+          featured: boolean
+          github_url: string | null
+          id: string
+          published: boolean
+          slug: string
+          sort_order: number
+          tech: string[]
+          title: string
+        }
+        Insert: {
+          cover_url?: string | null
+          created_at?: string
+          demo_url?: string | null
+          description: string
+          featured?: boolean
+          github_url?: string | null
+          id?: string
+          published?: boolean
+          slug: string
+          sort_order?: number
+          tech?: string[]
+          title: string
+        }
+        Update: {
+          cover_url?: string | null
+          created_at?: string
+          demo_url?: string | null
+          description?: string
+          featured?: boolean
+          github_url?: string | null
+          id?: string
+          published?: boolean
+          slug?: string
+          sort_order?: number
+          tech?: string[]
+          title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +220,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      dashboard_kind: "focus" | "book" | "skill" | "goal"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +347,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      dashboard_kind: ["focus", "book", "skill", "goal"],
+    },
   },
 } as const
