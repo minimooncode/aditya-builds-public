@@ -28,12 +28,19 @@ import {
 import { fetchProjects, fetchBlogPosts, fetchLearningTracks } from "@/lib/queries";
 import { SITE } from "@/lib/site";
 import { coverFor } from "@/lib/covers";
+import { getLinkedInProfile } from "@/lib/linkedin.functions";
+import { LinkedInCard } from "@/components/linkedin-card";
 import heroBg from "@/assets/hero-bg.jpg";
 import profileAsset from "@/assets/profile.png.asset.json";
 
 const projectsQuery = queryOptions({ queryKey: ["projects"], queryFn: fetchProjects });
 const postsQuery = queryOptions({ queryKey: ["posts"], queryFn: fetchBlogPosts });
 const tracksQuery = queryOptions({ queryKey: ["tracks"], queryFn: fetchLearningTracks });
+const linkedInQuery = queryOptions({
+  queryKey: ["linkedin", "profile"],
+  queryFn: () => getLinkedInProfile(),
+  staleTime: 5 * 60 * 1000,
+});
 
 export const Route = createFileRoute("/")({
   head: () => ({
