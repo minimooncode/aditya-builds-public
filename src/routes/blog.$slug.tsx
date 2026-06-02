@@ -21,6 +21,8 @@ export const Route = createFileRoute("/blog/$slug")({
         meta: [{ title: "Post not found — Aditya Cyber" }],
       };
     }
+    const coverUrl = coverFor(post.slug, "blog");
+    const absoluteCover = coverUrl.startsWith("http") ? coverUrl : `https://adityacyber.in${coverUrl}`;
     return {
       meta: [
         { title: `${post.title} — ${SITE.name}` },
@@ -28,7 +30,9 @@ export const Route = createFileRoute("/blog/$slug")({
         { property: "og:title", content: post.title },
         { property: "og:description", content: post.excerpt },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: `/blog/${params.slug}` },
+        { property: "og:url", content: `https://adityacyber.in/blog/${params.slug}` },
+        { property: "og:image", content: absoluteCover },
+        { name: "twitter:image", content: absoluteCover },
         { property: "article:published_time", content: post.published_at },
         { property: "article:section", content: post.category },
       ],
