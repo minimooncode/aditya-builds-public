@@ -44,7 +44,11 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: SITE.description },
       { property: "og:url", content: "/" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [
+      { rel: "canonical", href: "/" },
+      { rel: "preload", as: "image", href: heroBg, fetchpriority: "high" },
+      { rel: "preload", as: "image", href: profileAsset.url, fetchpriority: "high" },
+    ],
   }),
   loader: async ({ context }) => {
     await Promise.all([
@@ -161,6 +165,9 @@ function Home() {
           aria-hidden="true"
           width={1920}
           height={1280}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
         />
         <div className="pointer-events-none absolute inset-0 bg-hero-gradient" />
