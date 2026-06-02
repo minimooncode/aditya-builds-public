@@ -57,7 +57,9 @@ export const Route = createFileRoute("/now")({
       { name: "description", content: "What I'm focused on right now — projects, learning, books, and experiments." },
       { property: "og:title", content: "Now — Aditya Cyber" },
       { property: "og:description", content: "A real-time snapshot of what I'm working on, learning, and exploring." },
+      { property: "og:url", content: "https://adityacyber.in/now" },
     ],
+    links: [{ rel: "canonical", href: "https://adityacyber.in/now" }],
   }),
   component: NowPage,
 });

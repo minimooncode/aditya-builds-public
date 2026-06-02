@@ -19,7 +19,9 @@ export const Route = createFileRoute("/tools")({
       { name: "description", content: "A directory of cybersecurity tools for reconnaissance, OSINT, network analysis, web security, and more." },
       { property: "og:title", content: "Tools — Aditya Cyber" },
       { property: "og:description", content: "A directory of cybersecurity tools used by professionals and students." },
+      { property: "og:url", content: "https://adityacyber.in/tools" },
     ],
+    links: [{ rel: "canonical", href: "https://adityacyber.in/tools" }],
   }),
   component: ToolsPage,
 });

@@ -49,6 +49,7 @@ function ContactPage() {
   return (
     <section className="mx-auto max-w-6xl px-5 pt-20 pb-24">
       <SectionHeading
+        as="h1"
         eyebrow="Contact"
         title="Let's connect"
         description="Recruiters, founders, students, fellow learners — happy to chat about cybersecurity, AI, or just say hi."
