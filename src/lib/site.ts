@@ -2,7 +2,7 @@ export const SITE = {
   name: "Aditya Cyber",
   shortName: "Aditya",
   domain: "adityacyber.in",
-  url: "",
+  url: "https://adityacyber.in",
   tagline: "Building My Future in Cybersecurity",
   description:
     "Student, builder, and learner. Aditya is documenting a long-term journey in cybersecurity, AI, and technology — projects, notes, and progress, all in public.",
