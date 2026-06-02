@@ -6,10 +6,10 @@ export const SITE = {
   tagline: "Building My Future in Cybersecurity",
   description:
     "Student, builder, and learner. Aditya is documenting a long-term journey in cybersecurity, AI, and technology — projects, notes, and progress, all in public.",
-  email: "hello@adityacyber.in",
+  email: "adityacybersecurity@gmail.com",
   linkedin: "https://www.linkedin.com/in/adityacyber",
-  github: "https://github.com/adityacyber",
-  twitter: "https://twitter.com/adityacyber",
+  github: "https://github.com/minimooncode",
+  twitter: "https://twitter.com/0adity4",
 } as const;
 
 export const NAV = [
