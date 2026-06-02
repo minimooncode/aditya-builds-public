@@ -46,6 +46,7 @@ function BlogIndex() {
         <Link
           to="/blog/$slug"
           params={{ slug: featured.slug }}
+          data-cursor="blog"
           className="group mt-12 grid overflow-hidden rounded-2xl border border-border bg-surface shadow-card transition-colors hover:border-glow md:grid-cols-2"
         >
           <div className="aspect-[16/10] overflow-hidden bg-background md:aspect-auto">
@@ -101,6 +102,7 @@ function BlogIndex() {
             <Link
               to="/blog/$slug"
               params={{ slug: p.slug }}
+              data-cursor="blog"
               className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-card transition-colors hover:border-glow"
             >
               <div className="aspect-[16/10] overflow-hidden bg-background">

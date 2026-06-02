@@ -15,6 +15,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Toaster } from "@/components/ui/sonner";
+import { CustomCursor } from "@/components/custom-cursor";
 import { SITE } from "@/lib/site";
 
 function NotFoundComponent() {
@@ -150,6 +151,7 @@ function RootComponent() {
           <SiteFooter />
         </div>
         <Toaster />
+        <CustomCursor />
       </ThemeProvider>
     </QueryClientProvider>
   );

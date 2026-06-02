@@ -104,6 +104,7 @@ function ProjectsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.4, delay: i * 0.05 }}
+            data-cursor="project"
             className="group flex flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-card transition-colors hover:border-glow"
           >
             <div className="aspect-[16/10] overflow-hidden bg-background">
