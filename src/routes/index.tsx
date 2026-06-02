@@ -226,6 +226,42 @@ function Home() {
         </div>
       </section>
 
+      {/* SOCIAL PROOF */}
+      <section className="mx-auto max-w-6xl px-5 py-16">
+        <SectionHeading
+          eyebrow="Signal"
+          title="Recent activity"
+          description="A live snapshot of what I'm shipping, writing, and aiming for."
+        />
+        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-xl border border-border bg-surface p-5">
+            <div className="mb-3 flex items-center gap-2"><Linkedin className="h-4 w-4 text-primary-glow" /><p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">LinkedIn</p></div>
+            <p className="font-display text-base font-semibold">Sharing the journey</p>
+            <p className="mt-2 text-sm text-muted-foreground">Weekly updates on what I'm learning, building, and reading.</p>
+            <a href={SITE.linkedin} target="_blank" rel="noreferrer noopener" className="mt-4 inline-flex items-center gap-1 text-xs text-primary-glow hover:underline">View profile <ExternalLink className="h-3 w-3" /></a>
+          </div>
+          <div className="rounded-xl border border-border bg-surface p-5">
+            <div className="mb-3 flex items-center gap-2"><BookOpen className="h-4 w-4 text-primary-glow" /><p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">Latest post</p></div>
+            <p className="font-display text-base font-semibold line-clamp-2">{recent[0]?.title ?? "Coming soon"}</p>
+            <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{recent[0]?.excerpt ?? "First posts dropping shortly."}</p>
+            <Link to="/blog" className="mt-4 inline-flex items-center gap-1 text-xs text-primary-glow hover:underline">Read the blog <ArrowRight className="h-3 w-3" /></Link>
+          </div>
+          <div className="rounded-xl border border-border bg-surface p-5">
+            <div className="mb-3 flex items-center gap-2"><Github className="h-4 w-4 text-primary-glow" /><p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">Recent project</p></div>
+            <p className="font-display text-base font-semibold line-clamp-2">{projects[0]?.title ?? "Building"}</p>
+            <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{projects[0]?.description ?? "Public projects coming soon."}</p>
+            <Link to="/projects" className="mt-4 inline-flex items-center gap-1 text-xs text-primary-glow hover:underline">See projects <ArrowRight className="h-3 w-3" /></Link>
+          </div>
+          <div className="rounded-xl border border-border bg-surface p-5">
+            <div className="mb-3 flex items-center gap-2"><Sparkles className="h-4 w-4 text-primary-glow" /><p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">Future certifications</p></div>
+            <p className="font-display text-base font-semibold">CompTIA Security+</p>
+            <p className="mt-2 text-sm text-muted-foreground">Plus Google Cybersecurity & TryHackMe Pre-Security paths.</p>
+            <Link to="/career" className="mt-4 inline-flex items-center gap-1 text-xs text-primary-glow hover:underline">View career page <ArrowRight className="h-3 w-3" /></Link>
+          </div>
+        </div>
+      </section>
+
+
       {/* CTA STRIP */}
       <section className="mx-auto max-w-6xl px-5 pb-8">
         <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-surface to-background p-10 shadow-card md:p-14">
