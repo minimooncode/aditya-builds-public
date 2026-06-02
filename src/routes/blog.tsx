@@ -36,6 +36,7 @@ function BlogIndex() {
   return (
     <section className="mx-auto max-w-6xl px-5 pt-20 pb-24">
       <SectionHeading
+        as="h1"
         eyebrow="Blog"
         title="Notes from the journey"
         description="Honest writing on cybersecurity, AI, learning and building a career in tech."

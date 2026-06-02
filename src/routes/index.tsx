@@ -243,6 +243,9 @@ function Home() {
               >
                 <span className="text-gradient">Aditya</span>{" "}
                 <span className="text-primary-glow">Cyber</span>
+                <span className="mt-2 block font-display text-xl font-medium tracking-tight text-foreground sm:text-2xl md:text-3xl">
+                  Cybersecurity Student &amp; Builder
+                </span>
               </motion.h1>
 
               <motion.p

@@ -28,6 +28,7 @@ function LearningPage() {
   return (
     <section className="mx-auto max-w-6xl px-5 pt-20 pb-24">
       <SectionHeading
+        as="h1"
         eyebrow="Learning roadmap"
         title="What I'm studying — in public"
         description="A living roadmap I update as I make progress. Built so I stay accountable and so other students can follow along."

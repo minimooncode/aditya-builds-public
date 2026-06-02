@@ -38,7 +38,9 @@ export const Route = createFileRoute("/roadmap")({
       { name: "description", content: "Goals, milestones, and a long-term career roadmap for a cybersecurity journey." },
       { property: "og:title", content: "Roadmap — Aditya Cyber" },
       { property: "og:description", content: "An interactive roadmap from student to cybersecurity professional." },
+      { property: "og:url", content: "https://adityacyber.in/roadmap" },
     ],
+    links: [{ rel: "canonical", href: "https://adityacyber.in/roadmap" }],
   }),
   component: RoadmapPage,
 });

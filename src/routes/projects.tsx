@@ -46,6 +46,7 @@ function ProjectsPage() {
   return (
     <section className="mx-auto max-w-6xl px-5 pt-20 pb-24">
       <SectionHeading
+        as="h1"
         eyebrow="Projects"
         title="Things I've built"
         description="A growing collection of tools, scripts and experiments. More on the way."

@@ -10,7 +10,9 @@ export const Route = createFileRoute("/newsletter")({
       { name: "description", content: "Follow my cybersecurity journey. Notes, projects, and lessons from building in public." },
       { property: "og:title", content: "Newsletter — Aditya Cyber" },
       { property: "og:description", content: "Follow my cybersecurity journey. Notes, projects, and lessons — straight to your inbox." },
+      { property: "og:url", content: "https://adityacyber.in/newsletter" },
     ],
+    links: [{ rel: "canonical", href: "https://adityacyber.in/newsletter" }],
   }),
   component: NewsletterPage,
 });
