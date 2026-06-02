@@ -16,6 +16,7 @@ import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as NowRouteImport } from './routes/now'
 import { Route as NewsletterRouteImport } from './routes/newsletter'
+import { Route as LinkedinRouteImport } from './routes/linkedin'
 import { Route as LearningRouteImport } from './routes/learning'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -59,6 +60,11 @@ const NowRoute = NowRouteImport.update({
 const NewsletterRoute = NewsletterRouteImport.update({
   id: '/newsletter',
   path: '/newsletter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LinkedinRoute = LinkedinRouteImport.update({
+  id: '/linkedin',
+  path: '/linkedin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LearningRoute = LearningRouteImport.update({
@@ -116,6 +122,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/learning': typeof LearningRoute
+  '/linkedin': typeof LinkedinRoute
   '/newsletter': typeof NewsletterRoute
   '/now': typeof NowRoute
   '/projects': typeof ProjectsRoute
@@ -134,6 +141,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/learning': typeof LearningRoute
+  '/linkedin': typeof LinkedinRoute
   '/newsletter': typeof NewsletterRoute
   '/now': typeof NowRoute
   '/projects': typeof ProjectsRoute
@@ -153,6 +161,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/learning': typeof LearningRoute
+  '/linkedin': typeof LinkedinRoute
   '/newsletter': typeof NewsletterRoute
   '/now': typeof NowRoute
   '/projects': typeof ProjectsRoute
@@ -173,6 +182,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/dashboard'
     | '/learning'
+    | '/linkedin'
     | '/newsletter'
     | '/now'
     | '/projects'
@@ -191,6 +201,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/dashboard'
     | '/learning'
+    | '/linkedin'
     | '/newsletter'
     | '/now'
     | '/projects'
@@ -209,6 +220,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/dashboard'
     | '/learning'
+    | '/linkedin'
     | '/newsletter'
     | '/now'
     | '/projects'
@@ -228,6 +240,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRoute
   LearningRoute: typeof LearningRoute
+  LinkedinRoute: typeof LinkedinRoute
   NewsletterRoute: typeof NewsletterRoute
   NowRoute: typeof NowRoute
   ProjectsRoute: typeof ProjectsRoute
@@ -286,6 +299,13 @@ declare module '@tanstack/react-router' {
       path: '/newsletter'
       fullPath: '/newsletter'
       preLoaderRoute: typeof NewsletterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/linkedin': {
+      id: '/linkedin'
+      path: '/linkedin'
+      fullPath: '/linkedin'
+      preLoaderRoute: typeof LinkedinRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/learning': {
@@ -373,6 +393,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DashboardRoute: DashboardRoute,
   LearningRoute: LearningRoute,
+  LinkedinRoute: LinkedinRoute,
   NewsletterRoute: NewsletterRoute,
   NowRoute: NowRoute,
   ProjectsRoute: ProjectsRoute,

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
+import { useSuspenseQuery, useQuery, queryOptions } from "@tanstack/react-query";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -28,12 +28,19 @@ import {
 import { fetchProjects, fetchBlogPosts, fetchLearningTracks } from "@/lib/queries";
 import { SITE } from "@/lib/site";
 import { coverFor } from "@/lib/covers";
+import { getLinkedInProfile } from "@/lib/linkedin.functions";
+import { LinkedInCard } from "@/components/linkedin-card";
 import heroBg from "@/assets/hero-bg.jpg";
 import profileAsset from "@/assets/profile.png.asset.json";
 
 const projectsQuery = queryOptions({ queryKey: ["projects"], queryFn: fetchProjects });
 const postsQuery = queryOptions({ queryKey: ["posts"], queryFn: fetchBlogPosts });
 const tracksQuery = queryOptions({ queryKey: ["tracks"], queryFn: fetchLearningTracks });
+const linkedInQuery = queryOptions({
+  queryKey: ["linkedin", "profile"],
+  queryFn: () => getLinkedInProfile(),
+  staleTime: 5 * 60 * 1000,
+});
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -56,6 +63,7 @@ export const Route = createFileRoute("/")({
       context.queryClient.ensureQueryData(postsQuery),
       context.queryClient.ensureQueryData(tracksQuery),
     ]);
+    context.queryClient.prefetchQuery(linkedInQuery);
   },
   component: Home,
 });
@@ -97,6 +105,7 @@ function Home() {
   const { data: projects } = useSuspenseQuery(projectsQuery);
   const { data: posts } = useSuspenseQuery(postsQuery);
   const { data: tracks } = useSuspenseQuery(tracksQuery);
+  const { data: linkedIn } = useQuery(linkedInQuery);
 
   const recent = posts.slice(0, 1);
   const latestProject = projects[0];
@@ -625,8 +634,53 @@ function Home() {
         </div>
       </section>
 
+      {/* ===================== LINKEDIN ACTIVITY ===================== */}
+      <section className="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+        <div className="grid items-start gap-10 md:grid-cols-[1fr_1.1fr]">
+          <div>
+            <Eyebrow>LinkedIn activity</Eyebrow>
+            <h2 className="h-display-lg mt-3 font-display font-semibold tracking-tight">
+              Live from <span className="text-primary-glow">LinkedIn</span>
+            </h2>
+            <p className="mt-3 max-w-md text-sm text-muted-foreground sm:text-base">
+              My LinkedIn profile, pulled live through the connected account.
+              For posts, articles, and follower stats, hop over to the full profile —
+              LinkedIn's public API doesn't expose those numbers here.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href={SITE.linkedin}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex h-11 items-center gap-2 rounded-md bg-[#0A66C2] px-5 text-sm font-medium text-white shadow-glow transition-opacity hover:opacity-90"
+              >
+                <Linkedin className="h-4 w-4" /> Follow on LinkedIn
+              </a>
+              <Link
+                to="/linkedin"
+                className="inline-flex h-11 items-center gap-2 rounded-md border border-border bg-surface/70 px-5 text-sm font-medium hover:bg-secondary"
+              >
+                See full details <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5 }}
+          >
+            <LinkedInCard
+              profile={linkedIn?.profile ?? null}
+              error={linkedIn?.error ?? null}
+            />
+          </motion.div>
+        </div>
+      </section>
+
       {/* ===================== FINAL CTA ===================== */}
       <section className="mx-auto max-w-6xl px-5 pb-20 pt-8">
+
         <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-surface to-background p-8 shadow-card sm:p-12 lg:p-16">
           <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-primary/30 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-32 -left-10 h-72 w-72 rounded-full bg-primary-glow/20 blur-3xl" />
