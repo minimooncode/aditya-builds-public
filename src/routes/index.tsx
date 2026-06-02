@@ -634,8 +634,53 @@ function Home() {
         </div>
       </section>
 
+      {/* ===================== LINKEDIN ACTIVITY ===================== */}
+      <section className="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+        <div className="grid items-start gap-10 md:grid-cols-[1fr_1.1fr]">
+          <div>
+            <Eyebrow>LinkedIn activity</Eyebrow>
+            <h2 className="h-display-lg mt-3 font-display font-semibold tracking-tight">
+              Live from <span className="text-primary-glow">LinkedIn</span>
+            </h2>
+            <p className="mt-3 max-w-md text-sm text-muted-foreground sm:text-base">
+              My LinkedIn profile, pulled live through the connected account.
+              For posts, articles, and follower stats, hop over to the full profile —
+              LinkedIn's public API doesn't expose those numbers here.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href={SITE.linkedin}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex h-11 items-center gap-2 rounded-md bg-[#0A66C2] px-5 text-sm font-medium text-white shadow-glow transition-opacity hover:opacity-90"
+              >
+                <Linkedin className="h-4 w-4" /> Follow on LinkedIn
+              </a>
+              <Link
+                to="/linkedin"
+                className="inline-flex h-11 items-center gap-2 rounded-md border border-border bg-surface/70 px-5 text-sm font-medium hover:bg-secondary"
+              >
+                See full details <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5 }}
+          >
+            <LinkedInCard
+              profile={linkedIn?.profile ?? null}
+              error={linkedIn?.error ?? null}
+            />
+          </motion.div>
+        </div>
+      </section>
+
       {/* ===================== FINAL CTA ===================== */}
       <section className="mx-auto max-w-6xl px-5 pb-20 pt-8">
+
         <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-surface to-background p-8 shadow-card sm:p-12 lg:p-16">
           <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-primary/30 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-32 -left-10 h-72 w-72 rounded-full bg-primary-glow/20 blur-3xl" />
