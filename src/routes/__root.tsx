@@ -151,6 +151,7 @@ function RootComponent() {
           <SiteFooter />
         </div>
         <Toaster />
+        <CustomCursor />
       </ThemeProvider>
     </QueryClientProvider>
   );
