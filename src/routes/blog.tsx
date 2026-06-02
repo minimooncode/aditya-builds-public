@@ -102,6 +102,7 @@ function BlogIndex() {
             <Link
               to="/blog/$slug"
               params={{ slug: p.slug }}
+              data-cursor="blog"
               className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-card transition-colors hover:border-glow"
             >
               <div className="aspect-[16/10] overflow-hidden bg-background">
