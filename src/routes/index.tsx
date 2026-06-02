@@ -63,6 +63,7 @@ export const Route = createFileRoute("/")({
       context.queryClient.ensureQueryData(postsQuery),
       context.queryClient.ensureQueryData(tracksQuery),
     ]);
+    context.queryClient.prefetchQuery(linkedInQuery);
   },
   component: Home,
 });
