@@ -1,17 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { useServerFn } from "@tanstack/react-start";
 import { ArrowLeft, Linkedin } from "lucide-react";
 import { getLinkedInProfile } from "@/lib/linkedin.functions";
 import { LinkedInCard } from "@/components/linkedin-card";
 import { SITE } from "@/lib/site";
 
-const linkedInQuery = (fn: typeof getLinkedInProfile) =>
-  queryOptions({
-    queryKey: ["linkedin", "profile"],
-    queryFn: () => fn(),
-    staleTime: 5 * 60 * 1000,
-  });
+const linkedInQuery = queryOptions({
+  queryKey: ["linkedin", "profile"],
+  queryFn: () => getLinkedInProfile(),
+  staleTime: 5 * 60 * 1000,
+});
 
 export const Route = createFileRoute("/linkedin")({
   head: () => ({
@@ -30,12 +28,14 @@ export const Route = createFileRoute("/linkedin")({
     ],
     links: [{ rel: "canonical", href: `${SITE.url}/linkedin` }],
   }),
+  loader: ({ context }) => {
+    context.queryClient.ensureQueryData(linkedInQuery);
+  },
   component: LinkedInPage,
 });
 
 function LinkedInPage() {
-  const fetchProfile = useServerFn(getLinkedInProfile);
-  const { data } = useSuspenseQuery(linkedInQuery(fetchProfile));
+  const { data } = useSuspenseQuery(linkedInQuery);
 
   return (
     <main className="mx-auto max-w-3xl px-5 py-16 sm:py-24">
